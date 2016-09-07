@@ -1,0 +1,12 @@
+{
+  "name": "8gag",
+  "description": "A meme sharing platform",
+  "author": "Anurag Awasthi",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.0"
+  },
+  "devDependencies": {}
+}
