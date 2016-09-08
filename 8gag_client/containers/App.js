@@ -2,15 +2,13 @@ import React, {
   Component
 } from 'react'
 import Header from './Header'
-
+import auth from './auth'
+import {connect} from 'react-redux'
 class App extends Component {
   constructor(props) {
     super(props)
-    this.state={
-      posts:[]
-    }
   }
-  componentDidMount() {
+  componentDidMount() {/**
     const request = new XMLHttpRequest()
     const _this = this
     request.open('GET','http://localhost:3030/api/posts/listing',true)
@@ -21,10 +19,11 @@ class App extends Component {
       })
     }
     request.send()
+    **/
   }
   render() {
     let count=0
-    const navlinks=[{name:"Hot",path:"#"},{name:"Trending",path:"#"},{name:"Fresh",path:"#"},{name:"Login",path:"/login"}]
+    const navlinks=[{name:"Hot",path:"#"},{name:"Trending",path:"#"},{name:"Fresh",path:"#"},{name:"Login",path:"/login"},{name:"Signup",path:"/signup"},{name:"Create",path:"/create"}]
     const style={
       backgroundColor:'#ff0'
 
@@ -33,11 +32,14 @@ class App extends Component {
       <div>
         <Header heading="buenas dias" navlinks={navlinks} />
         <div>
-          {this.state.posts.map(post=><div key={count++} style={style}><h3>{post.title}</h3><p>{post.content}</p></div>)}
+          {this.props.reducer.posts.map(post=><div key={count++} style={style}><h3>{post.title}</h3><p>{post.content}</p></div>)}
         </div>
       </div>
     )
   }
 }
 
-export default App
+function mapStateToProps(state){
+  return state;
+}
+export default connect(mapStateToProps)(App)
