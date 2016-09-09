@@ -15,6 +15,7 @@ router.post("/posts/create", function(req, res) {
 	//check request body
 	var post = new Post(req.body);
 	post.postId = Date.now();
+	//post.postId=new puid().generate();
 	post.save(function(err) {
 		if (!err) {
 			console.log("/posts/create - data saved successfully");

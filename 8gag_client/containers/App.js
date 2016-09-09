@@ -4,6 +4,7 @@ import React, {
 import Header from './Header'
 import auth from './auth'
 import {connect} from 'react-redux'
+
 class App extends Component {
   constructor(props) {
     super(props)
