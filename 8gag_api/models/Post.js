@@ -32,3 +32,21 @@ module.exports.getAllPosts = function(cl) {
 		}
 	})
 }
+
+//update post
+module.exports.postUpdate = function(id, post, options, callback){
+	var query = {id:_id};
+	var update = {
+		created:post.created,
+		postId:post.postId,
+		title:post.title,
+		content:post.content
+	}
+	Post.findOneAndUpdate(query, update, options, callback);
+}
+
+//delete post
+module.exports.postDelete = function(id, callback){
+	var query = {id:_id};
+	Post.remove(query, callback);
+}

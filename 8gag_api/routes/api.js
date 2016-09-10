@@ -37,6 +37,27 @@ router.post("/posts/create", function(req, res) {
 	})
 })
 
+router.put("/posts/:_id", function(req, res){
+	var id = req.params._id;
+	var post = req.body;
+	Post.postUpdate(id, post, {}, function(err, post){
+		if(err){throw err;}
+		else{
+			res.status(200).json(post);
+		}
+	});
+});
+
+router.delete("/posts/:_id", function(req, res){
+	var id = req.params._id;
+	Post.postDelete(id, function(err){
+		if(err){throw err;}
+		else{
+			console.log("Post with id"+id+"deleted");
+		}
+	});
+});
+
 router.get("/user/listing", function(req, res) {
 	User.find({}, function(err, data) {
 		if (!err) {
@@ -89,6 +110,29 @@ router.post("/user/create", function(req, res) {
 
 	})
 })
+
+router.put("/user/:_id", function(req, res){
+	var id = req.params._id;
+	var user = req.body;
+	User.userUpdate(id, user, {}, function(err, user){
+		if(err){throw err;}
+		else{
+			res.status(200).json(user);
+		}
+	});
+});
+
+router.delete("/user/:_id", function(req, res){
+	var id = req.params._id;
+	User.userDelete(id, function(err){
+		if(err){
+			throw err;
+		}
+		else{
+			console.log("User wthe the id"+id+"deleted");
+		}
+	});
+});
 
 router.post("/user/verify", function(req, res) {
 	User.findOne({
